@@ -39,7 +39,9 @@
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 	gap: 20px;
 	padding: 20px;
-	background-color: #c81e1e;
+	background-color: #a67c2d;
+	margin: 0 1rem;
+	border-radius: 1rem;
 }
 
 .grid-item {

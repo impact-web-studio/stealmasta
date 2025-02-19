@@ -86,3 +86,13 @@ label,
 a {
 	color: white;
 }
+
+#credits {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	padding: 1rem;
+	font-size: 0.75rem;
+	color: white;
+	opacity: 0.65;
+}
