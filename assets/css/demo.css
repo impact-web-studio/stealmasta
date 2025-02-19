@@ -34,6 +34,9 @@
 }
 
 /* Layout */
+#header {
+	padding: 3rem 0rem 2rem 0rem;
+}
 .inner-section {
 	padding: 20px;
 	background-color: #a67c2d;
@@ -173,7 +176,7 @@
 }
 
 [data-technique='rotating-border'] .outerCrestLogo {
-	animation: rotate 60s linear infinite;
+	animation: rotate 50s linear infinite;
 }
 
 @keyframes rotate {
@@ -203,6 +206,7 @@
 	z-index: 0;
 	opacity: 0.3;
 	filter: blur(2px);
+	font-weight: bold;
 }
 
 /* Hover Ring with Flicker */
@@ -244,5 +248,84 @@
 	}
 	50% {
 		transform: translateY(3px);
+	}
+}
+
+/* Inner Y-Rotation */
+[data-technique='inner-y-rotation'].stacked-svgs {
+	perspective: 1000px;
+}
+
+[data-technique='inner-y-rotation'].stacked-svgs .innerCrestLogo {
+	transform-style: preserve-3d;
+	animation: innerRotateY 5s ease-in-out infinite;
+}
+
+@keyframes innerRotateY {
+	0% {
+		transform: rotateY(0deg);
+	}
+	50% {
+		transform: rotateY(180deg);
+	}
+	100% {
+		transform: rotateY(360deg);
+	}
+}
+/* Ensuring proper 3D perspective */
+[data-technique='double-ring-rotation'].stacked-svgs {
+	perspective: 1000px;
+}
+
+/* Wrapping container for 3D transforms */
+[data-technique='double-ring-rotation'].stacked-svgs #innerCrestWrapper {
+	transform-style: preserve-3d;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* First rotating ring */
+[data-technique='double-ring-rotation'].stacked-svgs #ring1 {
+	animation: angleRotate 5s linear infinite;
+	transform-origin: center;
+}
+
+/* Second rotating ring (opposite direction) */
+[data-technique='double-ring-rotation'].stacked-svgs #ring2 {
+	animation: angleRotate2 5s linear infinite;
+	transform-origin: center;
+}
+
+/* Inner crest remains centered */
+[data-technique='double-ring-rotation'].stacked-svgs #innerCrestLogo {
+	position: absolute;
+	transform-origin: center;
+}
+
+/* First ring rotation (clockwise) */
+@keyframes angleRotate {
+	0% {
+		transform: rotate3d(1, 1, 0, 0deg);
+	}
+	50% {
+		transform: rotate3d(1, 1, 0, 180deg);
+	}
+	100% {
+		transform: rotate3d(1, 1, 0, 360deg);
+	}
+}
+
+/* Second ring rotation (counterclockwise) */
+@keyframes angleRotate2 {
+	0% {
+		transform: rotate3d(1, -1, 1, 0deg);
+	}
+	50% {
+		transform: rotate3d(1, -1, 1, 180deg);
+	}
+	100% {
+		transform: rotate3d(1, -1, 1, 360deg);
 	}
 }
