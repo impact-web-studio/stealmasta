@@ -52,7 +52,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background: #222;
+	background: black;
 	border-radius: 10px;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	/* overflow: hidden; */
@@ -64,6 +64,17 @@
 .grid-item:hover {
 	transform: scale(1.1);
 	box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* SVG Stroke Outline - Stacking SVGs */
+
+.stacked-svgs {
+	display: grid;
+}
+
+.stacked-svgs > object {
+	grid-row: 1;
+	grid-column: 1;
 }
 
 /* Typography */
@@ -142,3 +153,5 @@
 .parallax:hover .inner {
 	transform: rotateX(20deg) rotateY(20deg);
 }
+
+/* Rotating Border */
