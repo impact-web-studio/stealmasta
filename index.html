@@ -18,65 +18,124 @@
 		<script src="script.js"></script>
 	</head>
 	<body>
-		<section
+		<main
 			id="crestLogo3D"
 			class="demo"
 		>
-			<div class="font-group">
-				<h1 class="colonna">Citizen & Thieves</h1>
-				<!--
-				<h2 class="dungeon">Steal Masta Studio</h2> -->
-				<h2 class="century">
-					<span class="steal">Steal</span>
-					<span class="masta">Masta</span> <span class="studio">Studios</span>
-				</h2>
-			</div>
-			<div class="grid-container">
-				<div
-					id="border-lighting"
-					class="grid-item"
-				>
-					<p class="effect-name">Border Lighting</p>
-
-					<div class="stacked-svgs">
-						<object
-							id="innerCrestLogo"
-							data="/assets/imgs/Logo Only.svg"
-							type="image/svg+xml"
-							width="100"
-							height="100"
-						></object>
-						<object
-							id="outerCrestLogo"
-							data="/assets/imgs/Outline Only.svg"
-							type="image/svg+xml"
-							width="100"
-							height="100"
-						></object>
+		<section id="header">
+				<div class="font-group">
+					<h1 class="colonna">Citizen & Thieves</h1>
+					<!--
+					<h2 class="dungeon">Steal Masta Studio</h2> -->
+					<h2 class="century">
+						<span class="steal">Steal</span>
+						<span class="masta">Masta</span> <span class="studio">Studios</span>
+					</h2>
+				</div>
+			</section>
+			<section id="techniques" class="inner-section">
+				<h2 class="colonna">MVP Options</h2>
+				<div class="grid-container">
+					<div
+						id="border-lighting"
+						class="grid-item"
+					>
+						<div
+							class="stacked-svgs"
+							data-technique="border-lighting"
+						>
+							<object
+								class="innerCrestLogo"
+								data="/assets/imgs/Logo Only.svg"
+								type="image/svg+xml"
+								width="100"
+								height="100"
+							></object>
+							<object
+								class="outerCrestLogo"
+								data="/assets/imgs/Outline Only.svg"
+								type="image/svg+xml"
+								width="100"
+								height="100"
+							></object>
+						</div>
+						<p class="effect-name dungeon">Border Lighting</p>
 					</div>
+					<div class="grid-item">
+						<div
+							class="stacked-svgs"
+							data-technique="rotating-border"
+						>
+							<object
+								class="innerCrestLogo"
+								data="/assets/imgs/Logo Only.svg"
+								type="image/svg+xml"
+								width="100"
+								height="100"
+							></object>
+							<object
+								class="outerCrestLogo"
+								data="/assets/imgs/Outline Only.svg"
+								type="image/svg+xml"
+								width="100"
+								height="100"
+							></object>
+						</div>
+						<p class="effect-name dungeon">Rotating Border</p>
+
+					</div>
+					<div class="grid-item">
+						<div
+							class="stacked-svgs"
+							data-technique="name-in-background"
+						>
+							<object
+								class="innerCrestLogo"
+								data="/assets/imgs/Logo Only.svg"
+								type="image/svg+xml"
+								width="100"
+								height="100"
+							></object>
+							<object
+								class="outerCrestLogo"
+								data="/assets/imgs/Outline Only.svg"
+								type="image/svg+xml"
+								width="100"
+								height="100"
+							></object>
+							<p class="background-name colonna">Citizen & Thieves</p>
+						</div>
+						<p class="effect-name dungeon">Name in Background</p>
+					</div>
+					<div class="grid-item hover-ring">
+						<div
+							class="stacked-svgs"
+							data-technique="hover-ring"
+						>
+							<object
+								class="innerCrestLogo"
+								data="/assets/imgs/Logo Only.svg"
+								type="image/svg+xml"
+								width="100"
+								height="100"
+							></object>
+							<object
+								class="outerCrestLogo"
+								data="/assets/imgs/Outline Only.svg"
+								type="image/svg+xml"
+								width="100"
+								height="100"
+							></object>
+							<div class="shadow"></div>
+						</div>
+						<p class="effect-name dungeon">Hover Ring (with Flicker)</p>
+
+					</div>
+					<div class="grid-item"></div>
+					<div class="grid-item"></div>
 				</div>
-				<div class="grid-item">
-					<p class="effect-name">Border Lighting</p>
-					<img
-						src="/assets/imgs/Outline Only.svg"
-						alt="Steal Masta Citizen & Thieves Crest Logo"
-						height="100"
-						width="100"
-					/>
-				</div>
-				<div class="grid-item">
-					<p class="effect-name">Border Lighting</p>
-					<img
-						src="/assets/imgs/StealMasta C&T_cropped_colored_black.svg"
-						alt="Steal Masta Citizen & Thieves Crest Logo"
-						height="100"
-						width="100"
-					/>
-				</div>
-				<div class="grid-item"></div>
-				<div class="grid-item"></div>
-				<div class="grid-item"></div>
-			</div>
+			</section>
+			
 		</section>
 		<section id="credits">
 			<p

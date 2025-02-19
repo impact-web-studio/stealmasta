@@ -33,14 +33,26 @@
 	letter-spacing: 0.875em;
 }
 
-/* Grid Layout */
+/* Layout */
+.inner-section {
+	padding: 20px;
+	background-color: #a67c2d;
+	border-radius: 1rem;
+	padding: 20px;
+	margin: 0 1rem;
+}
+
+.inner-section h2 {
+	text-align: center;
+	margin: 2rem 0rem 1rem 0rem;
+	font-size: 3rem;
+}
+
 .grid-container {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 	gap: 20px;
-	padding: 20px;
 	background-color: #a67c2d;
-	margin: 0 1rem;
 	border-radius: 1rem;
 }
 
@@ -48,9 +60,10 @@
 	position: relative;
 	width: 100%;
 	height: 200px;
+	padding: 2rem 0rem 0rem 0rem;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 	background: black;
 	border-radius: 10px;
@@ -80,11 +93,11 @@
 /* Typography */
 
 .effect-name {
-	font-family: 'Colonna MT', serif;
 	font-size: 2rem;
 	color: #fff;
 	text-align: center;
 	padding: 10px;
+	letter-spacing: 0em;
 }
 
 /* Images */
@@ -155,3 +168,81 @@
 }
 
 /* Rotating Border */
+[data-technique='rotating-border'] {
+	position: relative;
+}
+
+[data-technique='rotating-border'] .outerCrestLogo {
+	animation: rotate 60s linear infinite;
+}
+
+@keyframes rotate {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* Name in Background */
+[data-technique='name-in-background'].stacked-svgs {
+	justify-content: center;
+	align-items: center;
+}
+
+[data-technique='name-in-background'].stacked-svgs > * {
+	grid-row: 1;
+	grid-column: 1;
+	width: 100%;
+	z-index: 10;
+}
+
+[data-technique='name-in-background'] .background-name {
+	font-size: 2.5rem;
+	z-index: 0;
+	opacity: 0.3;
+	filter: blur(2px);
+}
+
+/* Hover Ring with Flicker */
+[data-technique='hover-ring'].stacked-svgs {
+	position: relative;
+	perspective: 1000px; /* Adds 3D perspective */
+	position: relative; /* Ensures shadow and logo are positioned correctly */
+}
+
+[data-technique='hover-ring'].stacked-svgs object {
+	transition:
+		transform 0.5s ease,
+		filter 0.5s ease;
+	filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+	transform-origin: center;
+	animation: floatLogo 5s ease-in-out infinite; /* Subtle floating animation */
+	z-index: 50;
+}
+
+[data-technique='hover-ring'].stacked-svgs .shadow {
+	z-index: 2;
+	position: absolute;
+	bottom: -25px; /* Positions the shadow below the logo */
+	left: 50%; /* Centers the shadow horizontally */
+	transform: translateX(-50%) rotateX(60deg); /* Tilts in 3D space */
+	width: 100px; /* Circle diameter */
+	height: 20px; /* Circle diameter */
+	border: 3px solid rgba(255, 255, 255, 1); /* Thin white border with transparency */
+	border-radius: 50%; /* Makes the shadow circular */
+	background: transparent; /* Transparent background */
+	filter: blur(5px); /* Slight blur for a soft edge */
+}
+
+/* Floating animations */
+@keyframes floatLogo {
+	0%,
+	100% {
+		transform: translateY(-3px);
+	}
+	50% {
+		transform: translateY(3px);
+	}
+}
