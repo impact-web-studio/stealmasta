@@ -87,6 +87,10 @@ a {
 	color: white;
 }
 
+main {
+	padding-bottom: 10rem;
+}
+
 #credits {
 	position: fixed;
 	bottom: 0;

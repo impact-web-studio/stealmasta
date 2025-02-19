@@ -50,8 +50,8 @@ document.addEventListener('DOMContentLoaded', function () {
 			const y = (event.clientY - top - height / 2) / height;
 
 			// Adjust rotation values for a more dramatic effect
-			const rotateX = y * 100; // Increase intensity
-			const rotateY = x * -100;
+			const rotateX = y * 50; // Increase intensity
+			const rotateY = x * -50;
 
 			parallaxElement.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
 		});
@@ -62,8 +62,23 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	}
 
+	function borderHighlightEffect() {
+		document.addEventListener('mousemove', (event) => {
+			const svg = document.getElementById('highlight-svg');
+			const gradient = document.getElementById('light-gradient');
+
+			const rect = svg.getBoundingClientRect();
+			const x = (event.clientX - rect.left) / rect.width;
+			const y = (event.clientY - rect.top) / rect.height;
+
+			gradient.setAttribute('fx', x);
+			gradient.setAttribute('fy', y);
+		});
+	}
+
 	// Run the functions
 
 	mouseTrackingDropShadow();
 	parallaxEffect();
+	borderHighlightEffect();
 });
