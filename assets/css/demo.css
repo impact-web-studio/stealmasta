@@ -107,34 +107,6 @@
 /* Images */
 
 /*** Technique Styles ***/
-
-/* Border Lighting */
-.border-lighting {
-	position: relative;
-	background: #111;
-}
-
-.border-lighting::before {
-	content: '';
-	position: absolute;
-	inset: 0;
-	border: 3px solid transparent;
-	border-radius: 10px;
-	animation: borderGlow 2s infinite linear;
-}
-
-@keyframes borderGlow {
-	0% {
-		border-color: rgba(255, 255, 255, 0.1);
-	}
-	50% {
-		border-color: rgba(255, 255, 255, 0.5);
-	}
-	100% {
-		border-color: rgba(255, 255, 255, 0.1);
-	}
-}
-
 /* Shadow Depth */
 .shadow-depth {
 	filter: drop-shadow(10px 10px 20px rgba(255, 255, 255, 1));
