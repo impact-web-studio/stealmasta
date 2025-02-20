@@ -1,31 +1,115 @@
 document.addEventListener('DOMContentLoaded', function () {
-	function parallaxEffect() {
-		const parallaxContainer = document.querySelector('.parallax');
-		const parallaxElement = parallaxContainer.querySelector('.stacked-svgs');
+	function mouseTrackingParallax() {
+		const trackingContainer = document.querySelector('.parallax-container');
 
-		if (!parallaxElement) return;
+		if (!trackingContainer) {
+			console.error('❌ Parallax container not found.');
+			return;
+		}
 
-		parallaxContainer.addEventListener('mousemove', (event) => {
-			const { width, height, left, top } =
-				parallaxContainer.getBoundingClientRect();
+		const parallaxElement =
+			trackingContainer.querySelector('.parallax-element');
 
-			// Get mouse position relative to the center of the container
-			const x = (event.clientX - left - width / 2) / width;
-			const y = (event.clientY - top - height / 2) / height;
+		if (!parallaxElement) {
+			console.error('❌ Parallax element not found.');
+			return;
+		}
 
-			// Adjust rotation values for a more dramatic effect
-			const rotateX = y * 100; // Increase intensity
-			const rotateY = x * -100;
+		console.log('✅ Parallax effect initialized.');
 
-			parallaxElement.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+		// Rotation variables
+		let rotateX = 0,
+			rotateY = 0,
+			rotateZ = 0;
+		let targetRotateX = 0,
+			targetRotateY = 0,
+			targetRotateZ = 0;
+		let ticking = false;
+		let isMouseOver = false;
+
+		// Rotation limits
+		const MAX_ROTATION = 20; // Maximum degrees of tilt
+		const MAX_Z_ROTATION = 10; // Subtle roll effect
+
+		// Perspective enhancement
+		parallaxElement.style.transformStyle = 'preserve-3d';
+		parallaxElement.style.transition = 'transform 0.1s ease-out';
+
+		// Handle mouse movement
+		trackingContainer.addEventListener(
+			'mousemove',
+			throttle((event) => {
+				const { width, height, left, top } =
+					trackingContainer.getBoundingClientRect();
+
+				// Normalized mouse position (-1 to 1)
+				const x = ((event.clientX - left) / width) * 2 - 1;
+				const y = ((event.clientY - top) / height) * 2 - 1;
+
+				// Corrected rotation mapping (opposite tilt)
+				targetRotateX = -y * MAX_ROTATION;
+				targetRotateY = x * MAX_ROTATION;
+				targetRotateZ = -x * MAX_Z_ROTATION;
+
+				isMouseOver = true;
+
+				// Start animation loop if not already running
+				if (!ticking) {
+					ticking = true;
+					requestAnimationFrame(updateTransform);
+				}
+			}, 16) // ~60FPS throttle
+		);
+
+		// Reset when mouse leaves
+		trackingContainer.addEventListener('mouseleave', () => {
+			targetRotateX = 0;
+			targetRotateY = 0;
+			targetRotateZ = 0;
+			isMouseOver = false;
+
+			// Ensure animation continues until fully reset
+			if (!ticking) {
+				ticking = true;
+				requestAnimationFrame(updateTransform);
+			}
 		});
 
-		parallaxContainer.addEventListener('mouseleave', () => {
-			// Reset rotation when mouse leaves
-			parallaxElement.style.transform = 'rotateX(0deg) rotateY(0deg)';
-		});
+		// Smooth transition effect using damping
+		function updateTransform() {
+			const dampingFactor = 0.1; // Smoothness control
+
+			rotateX += (targetRotateX - rotateX) * dampingFactor;
+			rotateY += (targetRotateY - rotateY) * dampingFactor;
+			rotateZ += (targetRotateZ - rotateZ) * dampingFactor;
+
+			// Apply transformation
+			parallaxElement.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`;
+
+			// Continue updating if movement is ongoing or resetting
+			if (
+				Math.abs(targetRotateX - rotateX) > 0.1 ||
+				Math.abs(targetRotateY - rotateY) > 0.1 ||
+				Math.abs(targetRotateZ - rotateZ) > 0.1
+			) {
+				requestAnimationFrame(updateTransform);
+			} else {
+				ticking = false;
+			}
+		}
 	}
 
-	// Run the function
-	parallaxEffect();
+	// Throttle function to limit event frequency
+	function throttle(callback, limit) {
+		let lastCall = 0;
+		return function (...args) {
+			const now = performance.now();
+			if (now - lastCall >= limit) {
+				lastCall = now;
+				callback.apply(this, args);
+			}
+		};
+	}
+
+	mouseTrackingParallax();
 });

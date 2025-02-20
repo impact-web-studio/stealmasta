@@ -144,50 +144,6 @@ main {
 	font-size: 3rem;
 }
 
-.grid-container {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-	gap: 20px;
-	background-color: #a67c2d;
-	border-radius: 1rem;
-	min-height: fit-content;
-}
-
-.grid-item {
-	position: relative;
-	width: 100%;
-	height: 200px;
-	padding: 2rem 0rem 0rem 0rem;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
-	background: black;
-	border-radius: 10px;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	/* overflow: hidden; */
-	transition:
-		transform 0.3s ease-in-out,
-		box-shadow 0.3s ease-in-out;
-}
-
-.grid-item:hover {
-	transform: scale(1.1);
-	box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-}
-
-/* SVG Stroke Outline - Stacking SVGs */
-
-.stacked-svgs {
-	display: grid;
-}
-
-.stacked-svgs object,
-.stacked-svgs .object-wrapper {
-	grid-row: 1;
-	grid-column: 1;
-}
-
 /* Typography */
 
 .effect-name {

@@ -1,92 +1,41 @@
-/* Rotating Border */
-[data-technique='combo-1'].stacked-svgs {
-	position: relative;
+/*** Layout ***/
+.parallax-container {
+	width: 100dvw;
+	height: 50vh;
 	transform-style: preserve-3d;
 	perspective: 1000px;
-	overflow: visible;
-	z-index: 1;
-	width: 100%;
-	height: fit-content;
-	align-items: center;
+	display: flex;
 	justify-content: center;
-	padding: 2rem 0.5rem;
+	align-items: center;
+	border: 3px solid red;
 }
 
-[data-technique='combo-1'] object,
-.object-wrapper {
-	transition:
-		transform 0.5s ease,
-		filter 0.5s ease;
-	filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
-	transform-origin: center;
-	z-index: 50;
+.parallax-container .wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-[data-technique='combo-1'] .object-wrapper {
-	animation: floatLogo 5s ease-in-out infinite;
+.parallax-container .grid-overlap {
+	display: grid;
 }
 
-[data-technique='combo-1'] .outerCrestLogo {
-	animation: rotate 30s linear infinite;
+.parallax-container .parallax-element {
+	will-change: transform;
 }
 
-[data-technique='combo-1'] .innerCrestLogo {
-	animation: floatLogo 5s ease-in-out infinite; /* Subtle floating animation */
+.parallax-container .grid-item {
+	grid-row: 1;
+	grid-column: 1;
+	background: transparent;
 }
 
-@keyframes rotate {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
+.parallax-container .inside {
+	z-index: 5;
 }
 
-/* Floating animations */
-@keyframes floatLogo {
-	0%,
-	100% {
-		transform: translate(0px, -10px);
-	}
-	50% {
-		transform: translate(0px, 10px);
-	}
+.parallax-container .outside {
+	z-index: 1;
 }
 
-.shadow {
-	z-index: 2;
-	position: absolute;
-	bottom: -5px; /* Positions the shadow below the logo */
-	left: 50%; /* Centers the shadow horizontally */
-	transform: translateX(-50%) rotateX(60deg); /* Tilts in 3D space */
-	width: 100px; /* Circle diameter */
-	height: 20px; /* Circle diameter */
-	border: 3px solid rgba(255, 255, 255, 1); /* Thin white border with transparency */
-	border-radius: 50%; /* Makes the shadow circular */
-	background: transparent; /* Transparent background */
-	filter: blur(5px); /* Slight blur for a soft edge */
-}
-
-/* Parallax Depth Effect */
-/* Stacked SVGs */
-
-/* Inner Crest */
-.parallax .innerCrestLogo {
-	transition: transform 0.15s ease-out;
-}
-
-/* Outer Crest */
-.parallax .outerCrestLogo,
-.parallax .object-wrapper {
-	transition: transform 0.15s ease-out;
-}
-
-.parallax .effect-name {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background: rgba(0, 0, 0, 0.5);
-	padding: 0;
-}
+/*** Animations ***/
