@@ -39,6 +39,47 @@
 }
 
 /*** Animations ***/
+@keyframes rotate {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes float {
+	0%,
+	100% {
+		transform: translateY(-2px);
+	}
+	50% {
+		transform: translateY(4px);
+	}
+}
+
+@keyframes shadowPulse {
+	0%,
+	100% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.1);
+	}
+}
+
+.parallax-container .inside,
+.parallax-container .outside {
+	animation: float 3s ease-in-out infinite;
+}
+
+.parallax-container .outerCrestLogo {
+	animation: rotate 60s linear infinite;
+}
+
+.shadow-effect {
+	animation: shadowPulse 3s ease-in-out infinite;
+}
 
 /*** General Styles ***/
 
@@ -50,7 +91,6 @@
 	z-index: 2;
 	position: absolute;
 	bottom: -60px; /* Positions the shadow below the logo */
-	left: 50%; /* Centers the shadow horizontally */
 	transform: translateX(-50%) rotateX(60deg); /* Tilts in 3D space */
 	width: 160px; /* Circle diameter */
 	height: 50px; /* Circle diameter */
