@@ -68,9 +68,31 @@
 	}
 }
 
+@keyframes flicker {
+	0%,
+	100% {
+		opacity: 1;
+		filter: brightness(1);
+	}
+	25% {
+		opacity: 0.85;
+		filter: brightness(1.1);
+	}
+	50% {
+		opacity: 0.9;
+		filter: brightness(0.95);
+	}
+	75% {
+		opacity: 0.8;
+		filter: brightness(1.2);
+	}
+}
+
 .parallax-container .inside,
 .parallax-container .outside {
-	animation: float 3s ease-in-out infinite;
+	animation:
+		float 3s ease-in-out infinite,
+		flicker 3s infinite alternate;
 }
 
 .parallax-container .outerCrestLogo {
@@ -98,4 +120,8 @@
 	border-radius: 50%; /* Makes the shadow circular */
 	background: transparent; /* Transparent background */
 	filter: blur(5px); /* Slight blur for a soft edge */
+}
+
+object {
+	filter: drop-shadow(0 0 10px rgba(255, 255, 255, 1));
 }
