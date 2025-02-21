@@ -132,30 +132,97 @@ p {
 	}
 }
 
-/* 5. Smoke Dissolve */
-.transition-5 object {
-	animation: smoke-dissolve 2s ease-out forwards;
+/* Transition 5 - Diagonal Screen Split */
+/* Transition 5 - Diagonal Sections Screen Wipe */
+.grid-item {
+	position: relative;
+	overflow: hidden;
 }
 
-@keyframes smoke-dissolve {
+.diagonal-container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	pointer-events: none;
+}
+
+/* Container */
+.diagonal-container {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+}
+
+/* Diagonal Strips */
+.diagonal-container {
+	position: relative;
+	height: 200px;
+	width: 100%;
+	background-color: red;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+}
+
+.diagonal {
+	border: 1px solid white;
+}
+/* Positioning the strips evenly across the full height */
+.diagonal:nth-child(1) {
+	clip-path: polygon(0 0, 100% 0%, 85% 100%, 0% 100%);
+	background-color: orange;
+}
+.diagonal:nth-child(2),
+.diagonal:nth-child(3),
+.diagonal:nth-child(4) {
+	clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
+	background-color: yellow;
+}
+.diagonal:nth-child(5) {
+	clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%);
+	background-color: green;
+}
+
+/* Hide logo when transition reaches midpoint */
+.transition-5 object {
+	animation: fade-out 1s ease-in-out forwards;
+}
+
+@keyframes slide-in-diagonal {
 	0% {
-		transform: scale(1);
-		filter: blur(0px);
-		opacity: 1;
-	}
-	50% {
-		transform: scale(2);
-		filter: blur(10px);
-		opacity: 0.7;
+		transform: translateX(-100%) rotate(10deg);
 	}
 	100% {
-		transform: scale(4);
-		filter: blur(20px);
-		opacity: 0;
+		transform: translateX(0) rotate(0);
 	}
 }
 
-/* Transition 6 - Delayed Section Entrance/Exit */
+@keyframes slide-out-diagonal {
+	0% {
+		transform: translateX(0) rotate(0);
+	}
+	100% {
+		transform: translateX(100%) rotate(-10deg);
+	}
+}
+
+@keyframes fade-out {
+	0% {
+		visibility: visible;
+	}
+	50% {
+		visibility: hidden;
+	}
+	100% {
+		visibility: hidden;
+	}
+}
+
+/* Transition 6 - Horizontal Screen Split Entrance/Exit */
 
 .grid-item {
 	overflow: hidden;
