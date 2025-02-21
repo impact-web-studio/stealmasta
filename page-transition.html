@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Page Transitions</title>
+
+		<link
+			rel="stylesheet"
+			href="/assets/css/transition.css"
+		/>
+	</head>
+	<body>
+		<section class="transition-container">
+			<div class="grid">
+				<div class="grid-item">
+					<object
+						class="innerCrestLogo"
+						data="/assets/imgs/StealMasta C&T2_cropped.svg"
+						type="image/svg+xml"
+						width="250"
+						height="250"
+					></object>
+					<p>Transition 1: Portal Expansion</p>
+					<button id="1">Click Me</button>
+				</div>
+				<div class="grid-item">
+					<object
+						class="innerCrestLogo"
+						data="/assets/imgs/StealMasta C&T2_cropped.svg"
+						type="image/svg+xml"
+						width="250"
+						height="250"
+					></object>
+					<p>Transition 2</p>
+					<button id="2">Click Me</button>
+				</div>
+				<div class="grid-item">
+					<object
+						class="innerCrestLogo"
+						data="/assets/imgs/StealMasta C&T2_cropped.svg"
+						type="image/svg+xml"
+						width="250"
+						height="250"
+					></object>
+					<p>Transition 3</p>
+					<button id="3">Click Me</button>
+				</div>
+				<div class="grid-item">
+					<object
+						class="innerCrestLogo"
+						data="/assets/imgs/StealMasta C&T2_cropped.svg"
+						type="image/svg+xml"
+						width="250"
+						height="250"
+					></object>
+					<p>Transition 4</p>
+					<button id="4">Click Me</button>
+				</div>
+				<div class="grid-item">
+					<object
+						class="innerCrestLogo"
+						data="/assets/imgs/StealMasta C&T2_cropped.svg"
+						type="image/svg+xml"
+						width="250"
+						height="250"
+					></object>
+					<p>Transition 5</p>
+					<button id="5">Click Me</button>
+				</div>
+				<div class="grid-item">
+					<object
+						class="innerCrestLogo"
+						data="/assets/imgs/StealMasta C&T2_cropped.svg"
+						type="image/svg+xml"
+						width="250"
+						height="250"
+					></object>
+					<p>Transition 6</p>
+					<button id="6">Click Me</button>
+					<div class="row">
+						<div class="child"></div>
+						<div class="child"></div>
+						<div class="child"></div>
+						<div class="child"></div>
+						<div class="child"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const buttons = document.querySelectorAll('button');
+		const gridItem = document.querySelectorAll('.grid-item');
+
+		buttons.forEach((button, index) => {
+			button.addEventListener('click', () => {
+				gridItem.forEach((item) => {
+					item.classList.remove('active');
+				});
+				gridItem[index].classList.add(`transition-${index + 1}`);
+				console.log(`grid item ${index} is active`);
+			});
+		});
+	});
+</script>

@@ -1,0 +1,238 @@
+/* General Styles */
+.transition-container {
+	width: 100vw;
+	height: 100vh;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 20px;
+}
+
+.grid-item {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: black;
+	padding: 5rem;
+	border: 1px solid white;
+	position: relative;
+}
+
+p {
+	color: white;
+}
+
+/* 1. Portal Expansion */
+.transition-1 object {
+	animation: portal-expand 1.5s ease-out forwards;
+}
+
+@keyframes portal-expand {
+	0% {
+		transform: scale(1);
+		filter: blur(0px);
+	}
+	50% {
+		transform: scale(2);
+		filter: blur(4px);
+	}
+	100% {
+		transform: scale(5);
+		filter: blur(10px);
+		opacity: 0;
+	}
+}
+
+/* 2. Radial Light Expansion */
+.transition-2::after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: radial-gradient(
+		circle,
+		rgba(255, 255, 255, 1) 0%,
+		rgba(0, 0, 0, 0) 100%
+	);
+	animation: radial-expand 1.5s ease-out forwards;
+	z-index: 10;
+}
+
+.transition-2 object {
+	animation: logo-fade 0.5s ease-out forwards;
+}
+
+@keyframes radial-expand {
+	0% {
+		transform: scale(0);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(10);
+		opacity: 0;
+	}
+}
+
+@keyframes logo-fade {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+.transition-3 object {
+	animation: spin-zoom 1.5s linear forwards;
+}
+
+@keyframes spin-zoom {
+	0% {
+		transform: scale(1) rotate(0deg);
+		filter: blur(0px);
+		opacity: 1;
+	}
+	10% {
+		transform: scale(2) rotate(90deg);
+		filter: blur(1px);
+		opacity: 0.75;
+	}
+	50% {
+		transform: scale(5) rotate(180deg);
+		filter: blur(10px);
+		opacity: 0.5;
+	}
+	100% {
+		transform: scale(10) rotate(360deg);
+		filter: blur(10px);
+		opacity: 0;
+	}
+}
+
+.transition-4 object {
+	animation: simple-dissolve 1.5s ease-out forwards;
+}
+
+@keyframes simple-dissolve {
+	0% {
+		opacity: 1;
+		filter: blur(0px);
+	}
+	50% {
+		opacity: 0.5;
+		filter: blur(5px);
+	}
+	100% {
+		opacity: 0;
+		filter: blur(10px);
+	}
+}
+
+/* 5. Smoke Dissolve */
+.transition-5 object {
+	animation: smoke-dissolve 2s ease-out forwards;
+}
+
+@keyframes smoke-dissolve {
+	0% {
+		transform: scale(1);
+		filter: blur(0px);
+		opacity: 1;
+	}
+	50% {
+		transform: scale(2);
+		filter: blur(10px);
+		opacity: 0.7;
+	}
+	100% {
+		transform: scale(4);
+		filter: blur(20px);
+		opacity: 0;
+	}
+}
+
+/* Transition 6 - Delayed Section Entrance/Exit */
+
+.grid-item {
+	overflow: hidden;
+}
+
+.grid-item .row {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	/* background-color: red; */
+	transform: translateX(-100%);
+}
+
+.row .child {
+	height: 20%;
+	background-color: white;
+}
+
+.transition-6 object {
+	animation: fade-out 1.2s ease-out forwards;
+}
+.transition-6 .row .child:nth-child(1) {
+	top: 0%;
+	animation:
+		slide-in 0.8s ease-out 0.1s forwards,
+		slide-out 0.8s ease-in 2s forwards;
+}
+.transition-6 .row .child:nth-child(2) {
+	top: 20%;
+	animation:
+		slide-in 0.8s ease-out 0.3s forwards,
+		slide-out 0.8s ease-in 2.2s forwards;
+}
+.transition-6 .row .child:nth-child(3) {
+	top: 40%;
+	animation:
+		slide-in 0.8s ease-out 0.5s forwards,
+		slide-out 0.8s ease-in 2.4s forwards;
+}
+.transition-6 .row .child:nth-child(4) {
+	top: 60%;
+	animation:
+		slide-in 0.8s ease-out 0.7s forwards,
+		slide-out 0.8s ease-in 2.6s forwards;
+}
+.transition-6 .row .child:nth-child(5) {
+	top: 80%;
+	animation:
+		slide-in 0.8s ease-out 0.9s forwards,
+		slide-out 0.8s ease-in 2.8s forwards;
+}
+
+@keyframes slide-in {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(100%);
+	}
+}
+
+@keyframes slide-out {
+	from {
+		transform: translateX(100%);
+	}
+	to {
+		transform: translateX(200%);
+	}
+}
+
+@keyframes fade-out {
+	0% {
+		visibility: inherit;
+	}
+	100% {
+		visibility: hidden;
+	}
+}
