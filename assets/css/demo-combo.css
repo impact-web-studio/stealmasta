@@ -47,6 +47,7 @@
 	letter-spacing: -0.03em;
 	animation: float 3s ease-in-out infinite;
 	opacity: 0.5;
+	font-size: 1rem;
 }
 
 /*** Animations ***/
