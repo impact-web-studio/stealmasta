@@ -1,7 +1,7 @@
 /*** Layout ***/
 .parallax-container {
 	width: 100dvw;
-	height: 50vh;
+	height: 80vh;
 	transform-style: preserve-3d;
 	perspective: 1000px;
 	display: flex;

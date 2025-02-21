@@ -144,6 +144,10 @@ main {
 	font-size: 3rem;
 }
 
+.parallax-container {
+	margin-bottom: 5rem;
+}
+
 /* Typography */
 
 .effect-name {
@@ -162,4 +166,5 @@ main {
 	font-size: 0.75rem;
 	color: white;
 	opacity: 0.65;
+	margin-top: 5rem;
 }
