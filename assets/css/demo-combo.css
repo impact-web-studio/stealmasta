@@ -2,6 +2,7 @@
 .parallax-container {
 	width: 100dvw;
 	height: 80vh;
+	max-height: 600px;
 	transform-style: preserve-3d;
 	perspective: 1000px;
 	display: flex;
@@ -36,6 +37,16 @@
 
 .parallax-container .outside {
 	z-index: 1;
+}
+
+.trademark {
+	position: absolute;
+	top: 0;
+	right: 15px;
+	font-weight: bold;
+	letter-spacing: -0.03em;
+	animation: float 3s ease-in-out infinite;
+	opacity: 0.5;
 }
 
 /*** Animations ***/
