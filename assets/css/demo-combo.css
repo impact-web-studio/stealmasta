@@ -122,6 +122,6 @@
 	filter: blur(5px); /* Slight blur for a soft edge */
 }
 
-object {
-	filter: drop-shadow(0 0 10px rgba(255, 255, 255, 1));
+.outerCrestLogo {
+	filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
 }
