@@ -1,7 +1,13 @@
 /* General Styles */
 .transition-container {
 	width: 100vw;
-	height: 100vh;
+	min-height: 100vh;
+	padding: 5rem 1rem;
+	margin-bottom: 5rem;
+}
+
+h2 {
+	padding: 3rem 0;
 }
 
 .grid {
@@ -18,11 +24,20 @@
 	background: black;
 	padding: 5rem;
 	border: 1px solid white;
+	border-radius: 0.5rem;
 	position: relative;
+	gap: 2rem;
 }
 
 p {
 	color: white;
+	font-size: 2rem;
+	line-height: 1em;
+}
+
+button {
+	padding: 0.5rem 1rem;
+	font-size: 1.25rem;
 }
 
 /* 1. Portal Expansion */
@@ -86,6 +101,8 @@ p {
 		opacity: 0;
 	}
 }
+
+/* Transition 3 - Spin Zoom */
 .transition-3 object {
 	animation: spin-zoom 1.5s linear forwards;
 }
@@ -132,93 +149,75 @@ p {
 	}
 }
 
-/* Transition 5 - Diagonal Screen Split */
-/* Transition 5 - Diagonal Sections Screen Wipe */
-.grid-item {
+/* Transition 5 - Vertical Screen Split */
+
+.transition-5 {
 	position: relative;
-	overflow: hidden;
+	overflow: visible;
 }
 
-.diagonal-container {
+.vertical-container {
 	position: absolute;
-	top: 0;
-	left: 0;
 	width: 100%;
 	height: 100%;
 	display: flex;
-	flex-direction: column;
-	pointer-events: none;
+	transform: translateY(-100%);
 }
 
-/* Container */
-.diagonal-container {
-	position: relative;
-	width: 100%;
-	height: 100vh;
-	overflow: hidden;
+/* Vertical Strips */
+.vertical {
+	background-color: white;
+	height: 100%;
+	width: 25%;
 }
 
-/* Diagonal Strips */
-.diagonal-container {
-	position: relative;
-	height: 200px;
-	width: 100%;
-	background-color: red;
-	display: grid;
-	grid-template-columns: repeat(5, 1fr);
+/* Animations */
+.transition-5 .vertical:nth-child(1) {
+	animation:
+		slide-in-y 0.8s ease-out 0.1s forwards,
+		slide-out-y 1s ease-in 2s forwards;
+}
+.transition-5 .vertical:nth-child(2) {
+	animation:
+		slide-in-y 0.8s ease-out 0.3s forwards,
+		slide-out-y 0.8s ease-in 2.2s forwards;
+}
+.transition-5 .vertical:nth-child(3) {
+	animation:
+		slide-in-y 0.8s ease-out 0.5s forwards,
+		slide-out-y 0.8s ease-in 2.4s forwards;
+}
+.transition-5 .vertical:nth-child(4) {
+	animation:
+		slide-in-y 0.8s ease-out 0.7s forwards,
+		slide-out-y 0.8s ease-in 2.6s forwards;
+}
+.transition-5 .vertical:nth-child(5) {
+	animation:
+		slide-in-y 0.8s ease-out 0.9s forwards,
+		slide-out-y 0.8s ease-in 2.8s forwards;
 }
 
-.diagonal {
-	border: 1px solid white;
-}
-/* Positioning the strips evenly across the full height */
-.diagonal:nth-child(1) {
-	clip-path: polygon(0 0, 100% 0%, 85% 100%, 0% 100%);
-	background-color: orange;
-}
-.diagonal:nth-child(2),
-.diagonal:nth-child(3),
-.diagonal:nth-child(4) {
-	clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
-	background-color: yellow;
-}
-.diagonal:nth-child(5) {
-	clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%);
-	background-color: green;
-}
-
-/* Hide logo when transition reaches midpoint */
 .transition-5 object {
-	animation: fade-out 1s ease-in-out forwards;
+	animation: fade-out 1.2s ease-out forwards;
 }
 
-@keyframes slide-in-diagonal {
-	0% {
-		transform: translateX(-100%) rotate(10deg);
+/* Keyframes */
+@keyframes slide-in-y {
+	from {
+		transform: translateY(0);
 	}
-	100% {
-		transform: translateX(0) rotate(0);
-	}
-}
-
-@keyframes slide-out-diagonal {
-	0% {
-		transform: translateX(0) rotate(0);
-	}
-	100% {
-		transform: translateX(100%) rotate(-10deg);
+	to {
+		transform: translateY(100%);
 	}
 }
 
-@keyframes fade-out {
-	0% {
-		visibility: visible;
+@keyframes slide-out-y {
+	from {
+		transform: translateY(100%);
 	}
-	50% {
-		visibility: hidden;
-	}
-	100% {
-		visibility: hidden;
+	to {
+		transform: translateY(200%);
 	}
 }
 
