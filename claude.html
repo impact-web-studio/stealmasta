@@ -1,167 +1,38 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Company Landing Page</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="page-wrapper">
-        <header class="site-header">
-            <div class="header-content">
-                <div class="logo-header-container">
-                    <div class="logo-container">
-                        <span class="trademark">TM</span>
-                        <div class="logo-stack grid-overlap">
-                            <div class="logo-layer logo-inner">
-                                <object 
-                                    class="inner-logo" 
-                                    data="/assets/final_imgs/all-svgs/inner-crest.svg"
-                                    type="image/svg+xml" 
-                                    width="250" 
-                                    height="250"
-                                    aria-label="Inner Logo Component"
-                                ></object>
-                            </div>
-                            <div class="logo-layer logo-outer">
-                                <object 
-                                    class="outer-logo" 
-                                    data="/assets/final_imgs/all-svgs/outer-crest.svg" 
-                                    type="image/svg+xml" 
-                                    width="250" 
-                                    height="250"
-                                    aria-label="Outer Logo Component"
-                                ></object>
-                            </div>
-                        </div>
-                </div>
-                
-                <div class="brand-text">
-                    <h1 class="company-name">Citizen & Thieves</h1>
-                    <h2 class="brand-tagline">
-                        <span class="primary-brand">Steal</span>
-                        <span class="secondary-brand">Masta</span> 
-                        <span class="brand-descriptor">Studios</span>
-                    </h2>
-                </div>
-            </div>
-        </header>
-
-        <main class="page-content">
-            <div class="landing-zone">
-                <section class="hero-section">
-                    <div class="logo-placement-area">
-                        <!-- Logo will be dynamically positioned here -->
-                        <div class="logo-container">
-                            <span class="trademark">TM</span>
-                            <div class="logo-stack grid-overlap">
-                                <div class="logo-layer logo-inner">
-                                    <object 
-                                        class="inner-logo" 
-                                        data="/assets/final_imgs/all-svgs/inner-crest.svg"
-                                        type="image/svg+xml" 
-                                        width="250" 
-                                        height="250"
-                                        aria-label="Inner Logo Component"
-                                    ></object>
-                                </div>
-                                <div class="logo-layer logo-outer">
-                                    <object 
-                                        class="outer-logo" 
-                                        data="/assets/final_imgs/all-svgs/outer-crest.svg" 
-                                        type="image/svg+xml" 
-                                        width="250" 
-                                        height="250"
-                                        aria-label="Outer Logo Component"
-                                    ></object>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="newsletter-section">
-                    <form 
-                        class="newsletter-form" 
-                        aria-labelledby="newsletter-heading"
-                        novalidate
-                    >
-                        <h2 id="newsletter-heading">Subscribe to Our Newsletter</h2>
-                        
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input 
-                                type="email" 
-                                id="email" 
-                                name="email" 
-                                required 
-                                aria-required="true"
-                                placeholder="Enter your email"
-                            >
-                        </div>
-
-                        <div class="form-group">
-                            <button type="submit">Subscribe</button>
-                        </div>
-
-                        <div class="form-status" aria-live="polite">
-                            <!-- For form submission feedback -->
-                        </div>
-                    </form>
-                </section>
-            </div>
-        </main>
-
-        <footer class="site-footer">
-            <p class="credits">
-                Designed and Developed by Kenny Nguyen @ Impact Web Studio
-            </p>
-        </footer>
-    </div>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Company Landing Page</title>
+		<link
+			rel="stylesheet"
+			href="style.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="/assets/css/final.css"
+		/>
+	</head>
+	<body>
+		<header>
+			<div class="iws-mobile-logo">
+				<span>mobile logo placeholder</span>
+			</div>
+			<h2 class="century">
+				<span class="iws-steal">Steal</span>
+				<span class="iws-masta">Masta</span>
+				<span class="iws-studio">Studios</span>
+			</h2>
+		</header>
+		<main class="main-content">
+			<section class="newsletter-form-container">
+				<h2>newsletter form section</h2>
+			</section>
+			<section class="desktop-crest">desktop crest section</section>
+		</main>
+		<footer>footer section</footer>
+	</body>
 </html>
-
-<style>
-
-    .page-wrapper {
-        background: url(/assets/final_imgs/background-image.webp) no-repeat center center/cover;
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
-}
-
-.logo-stack {
-    position: relative;
-    display: grid;
-}
-
-.logo-layer {
-    grid-area: 1 / 1;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-.logo-inner,
-.logo-outer {
-    transition: transform 0.5s ease-in-out, 
-                opacity 0.5s ease-in-out;
-}
-
-/* Responsive and positioning classes for transitions */
-.logo-placement-area,
-.newsletter-section {
-    position: absolute;
-    transition: all 0.5s ease-in-out;
-}
-
-/* Media query for responsive layout */
-@media (max-width: 768px) {
-    /* Mobile-specific positioning and layout */
-    .header-content {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-</style>
