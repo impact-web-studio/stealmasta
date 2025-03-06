@@ -1,46 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-	// Create dots around the logo outer ring
-	const dotsContainer = document.getElementById('dots');
-	const numberOfDots = 24;
-	const numberOfGlowingDots = 24;
-
-	// Create white dots
-	for (let i = 0; i < numberOfDots; i++) {
-		const dot = document.createElement('div');
-		dot.classList.add('dot');
-
-		const angle = (i / numberOfDots) * 2 * Math.PI;
-		const radius = 145; // Radius from center to dots
-
-		const x = 150 + radius * Math.cos(angle);
-		const y = 150 + radius * Math.sin(angle);
-
-		dot.style.left = `${x}px`;
-		dot.style.top = `${y}px`;
-
-		dotsContainer.appendChild(dot);
-	}
-
-	// Create glowing dots
-	for (let i = 0; i < numberOfGlowingDots; i++) {
-		const glowingDot = document.createElement('div');
-		glowingDot.classList.add('glowing-dot');
-
-		const angle = (i / numberOfGlowingDots) * 2 * Math.PI;
-		const radius = 145; // Same radius for alignment
-
-		// Offset angle to place these dots between the white dots
-		const offsetAngle = angle + Math.PI / numberOfGlowingDots;
-
-		const x = 150 + radius * Math.cos(offsetAngle);
-		const y = 150 + radius * Math.sin(offsetAngle);
-
-		glowingDot.style.left = `${x}px`;
-		glowingDot.style.top = `${y}px`;
-
-		dotsContainer.appendChild(glowingDot);
-	}
-
 	// Add initial animations
 	const logoInner = document.getElementById('logoInner');
 	logoInner.classList.add('float', 'flicker');
@@ -76,8 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		logoInner.classList.remove('float', 'flicker');
 
 		// First - apply transition styling before changing positions
-		logoContainer.style.transition =
-			'all 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)';
+		logoContainer.style.transition = 'all 1.5s cubic-bezier(0.55, 0.1, 0, 1)';
 
 		// Apply different transitions based on screen size
 		if (window.innerWidth <= 768) {
@@ -90,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			// Desktop transition - use absolute pixel values instead of 'auto'
 			logoContainer.style.top = finalPositionDesktop.top + 'px';
 			logoContainer.style.left = finalPositionDesktop.left + 'px';
-			logoContainer.style.transform = 'translate(-50%, -50%) scale(0.7)';
+			logoContainer.style.transform = 'translate(-50%, -50%) scale(3)';
 			logoContainer.style.transformOrigin = 'center center';
 		}
 
