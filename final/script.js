@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 				logoContainer.style.top = finalPositionDesktop.top + 'px';
 				logoContainer.style.left = finalPositionDesktop.left + 'px';
-				logoContainer.style.transform = 'translate(-50%, -50%) scale(0.7)';
+				logoContainer.style.transform = 'translate(-50%, -50%) scale(2.5)';
 				logoContainer.style.transformOrigin = 'center center';
 			}
 		}
