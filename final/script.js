@@ -1,7 +1,70 @@
 document.addEventListener('DOMContentLoaded', function () {
+	// Create dots around the logo outer ring
+	const dotsContainer = document.getElementById('dots');
+	const numberOfDots = 24;
+	const numberOfGlowingDots = 24;
+
+	// Create white dots
+	for (let i = 0; i < numberOfDots; i++) {
+		const dot = document.createElement('div');
+		dot.classList.add('dot');
+
+		const angle = (i / numberOfDots) * 2 * Math.PI;
+		const radius = 145; // Radius from center to dots
+
+		const x = 150 + radius * Math.cos(angle);
+		const y = 150 + radius * Math.sin(angle);
+
+		dot.style.left = `${x}px`;
+		dot.style.top = `${y}px`;
+
+		dotsContainer.appendChild(dot);
+	}
+
+	// Create glowing dots
+	for (let i = 0; i < numberOfGlowingDots; i++) {
+		const glowingDot = document.createElement('div');
+		glowingDot.classList.add('glowing-dot');
+
+		const angle = (i / numberOfGlowingDots) * 2 * Math.PI;
+		const radius = 145; // Same radius for alignment
+
+		// Offset angle to place these dots between the white dots
+		const offsetAngle = angle + Math.PI / numberOfGlowingDots;
+
+		const x = 150 + radius * Math.cos(offsetAngle);
+		const y = 150 + radius * Math.sin(offsetAngle);
+
+		glowingDot.style.left = `${x}px`;
+		glowingDot.style.top = `${y}px`;
+
+		dotsContainer.appendChild(glowingDot);
+	}
+
 	// Add initial animations
 	const logoInner = document.getElementById('logoInner');
 	logoInner.classList.add('float', 'flicker');
+
+	// Calculate positions for smooth transition
+	const initialPositionDesktop = {
+		left: window.innerWidth / 2,
+		top: window.innerHeight / 2,
+	};
+
+	const finalPositionDesktop = {
+		left: window.innerWidth - 100,
+		top: window.innerHeight / 2,
+	};
+
+	const initialPositionMobile = {
+		left: window.innerWidth / 2,
+		top: window.innerHeight / 2,
+	};
+
+	const finalPositionMobile = {
+		left: 20,
+		top: 30,
+	};
 
 	// Start transitions after 3 seconds
 	setTimeout(function () {
@@ -12,24 +75,22 @@ document.addEventListener('DOMContentLoaded', function () {
 		// Remove floating and flickering animations
 		logoInner.classList.remove('float', 'flicker');
 
-		// First - apply transition styling before changing classes
-		// This ensures the transition is smooth
+		// First - apply transition styling before changing positions
 		logoContainer.style.transition =
 			'all 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)';
 
 		// Apply different transitions based on screen size
 		if (window.innerWidth <= 768) {
-			// Mobile transition
-			logoContainer.style.top = '30px';
-			logoContainer.style.left = '20px';
+			// Mobile transition - use absolute pixel values
+			logoContainer.style.top = finalPositionMobile.top + 'px';
+			logoContainer.style.left = finalPositionMobile.left + 'px';
 			logoContainer.style.transform = 'scale(0.15)';
 			logoContainer.style.transformOrigin = 'left top';
 		} else {
-			// Desktop transition
-			logoContainer.style.top = '50%';
-			logoContainer.style.left = 'auto';
-			logoContainer.style.right = '100px';
-			logoContainer.style.transform = 'translate(0, -50%) scale(0.7)'; // Increased size for desktop
+			// Desktop transition - use absolute pixel values instead of 'auto'
+			logoContainer.style.top = finalPositionDesktop.top + 'px';
+			logoContainer.style.left = finalPositionDesktop.left + 'px';
+			logoContainer.style.transform = 'translate(-50%, -50%) scale(0.7)';
 			logoContainer.style.transformOrigin = 'center center';
 		}
 
@@ -50,14 +111,17 @@ document.addEventListener('DOMContentLoaded', function () {
 			if (window.innerWidth <= 768) {
 				logoContainer.style.top = '30px';
 				logoContainer.style.left = '20px';
-				logoContainer.style.right = 'auto';
 				logoContainer.style.transform = 'scale(0.15)';
 				logoContainer.style.transformOrigin = 'left top';
 			} else {
-				logoContainer.style.top = '50%';
-				logoContainer.style.left = 'auto';
-				logoContainer.style.right = '100px';
-				logoContainer.style.transform = 'translate(0, -50%) scale(0.7)';
+				const finalPositionDesktop = {
+					left: window.innerWidth - 100,
+					top: window.innerHeight / 2,
+				};
+
+				logoContainer.style.top = finalPositionDesktop.top + 'px';
+				logoContainer.style.left = finalPositionDesktop.left + 'px';
+				logoContainer.style.transform = 'translate(-50%, -50%) scale(0.7)';
 				logoContainer.style.transformOrigin = 'center center';
 			}
 		}
