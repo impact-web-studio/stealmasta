@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	};
 
 	const finalPositionDesktop = {
-		left: window.innerWidth - 100,
+		left: window.innerWidth - 50,
 		top: window.innerHeight / 2,
 	};
 
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		logoInner.classList.remove('float', 'flicker');
 
 		// First - apply transition styling before changing positions
-		logoContainer.style.transition = 'all 1.5s cubic-bezier(0.55, 0.1, 0, 1)';
+		logoContainer.style.transition = 'all 2s cubic-bezier(0.4, 0, 0, 1)';
 
 		// Apply different transitions based on screen size
 		if (window.innerWidth <= 768) {
