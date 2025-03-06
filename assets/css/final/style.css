@@ -60,6 +60,7 @@
 
 .iws-page-wrapper {
 	background-image: url(/assets/final_imgs/background-image.webp);
+	background-color: rgba(0, 0, 0, 1);
 	width: 100dvw;
 	height: 100vh;
 	position: relative;

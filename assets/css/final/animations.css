@@ -1,0 +1,97 @@
+/*** Layout ***/
+.overlay {
+	transform-style: preserve-3d;
+	perspective: 1000px;
+}
+
+.overlay .crest-wrapper {
+	will-change: transform;
+}
+
+/*** Animations ***/
+@keyframes rotate {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes float {
+	0%,
+	100% {
+		transform: translateY(-2px);
+	}
+	50% {
+		transform: translateY(4px);
+	}
+}
+
+@keyframes shadowPulse {
+	0%,
+	100% {
+		transform: scaleX(1);
+	}
+	50% {
+		transform: scaleX(1.08);
+	}
+}
+
+@keyframes flicker {
+	0%,
+	100% {
+		opacity: 1;
+		filter: brightness(1);
+	}
+	25% {
+		opacity: 0.85;
+		filter: brightness(1.1);
+	}
+	50% {
+		opacity: 0.9;
+		filter: brightness(0.95);
+	}
+	75% {
+		opacity: 0.8;
+		filter: brightness(1.2);
+	}
+}
+
+.overlay .inside,
+.overlay .outside {
+	animation:
+		float 3s ease-in-out infinite,
+		flicker 3s infinite alternate;
+}
+
+.overlay .outerCrestLogo {
+	animation: rotate 60s linear infinite;
+}
+
+.shadow-effect {
+	animation: shadowPulse 3s ease-in-out infinite;
+}
+
+/*** General Styles ***/
+
+.wrapper {
+	position: relative;
+}
+
+.shadow-effect {
+	z-index: 2;
+	position: absolute;
+	bottom: -50px; /* Positions the shadow below the logo */
+	transform: translateX(-50%) rotateX(90deg); /* Tilts in 3D space */
+	width: 150px; /* Circle diameter */
+	height: 40px; /* Circle diameter */
+	border: 8px solid rgba(255, 255, 255, 0.5); /* Thin white border with transparency */
+	border-radius: 50%; /* Makes the shadow circular */
+	background: transparent; /* Transparent background */
+	filter: blur(5px); /* Slight blur for a soft edge */
+}
+
+.outerCrestLogo {
+	filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}

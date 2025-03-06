@@ -1,84 +1,114 @@
 document.addEventListener('DOMContentLoaded', function () {
-	function mouseTrackingDropShadow() {
-		const svg = document.querySelector('svg');
+	function mouseTrackingParallax() {
+		const trackingContainer = document.querySelector('.overlay');
 
-		if (!svg) {
-			console.error('❌ SVG element not found.');
+		if (!trackingContainer) {
+			console.error('❌ Parallax container not found.');
 			return;
 		}
 
-		console.log('✅ SVG detected, initializing effect...');
+		const parallaxElement = trackingContainer.querySelector('.crest-wrapper');
 
-		function updateShadow(event) {
-			const svgRect = svg.getBoundingClientRect();
-			const centerX = svgRect.left + svgRect.width / 2;
-			const centerY = svgRect.top + svgRect.height / 2;
-
-			const mouseX = event.clientX;
-			const mouseY = event.clientY;
-
-			// Calculate the angle between the mouse and the SVG center
-			const angle = Math.atan2(mouseY - centerY, mouseX - centerX);
-			const shadowX = Math.cos(angle) * 10; // Adjust shadow strength
-			const shadowY = Math.sin(angle) * 10;
-
-			console.log(
-				`📌 Mouse: (${mouseX}, ${mouseY}) | Angle: ${angle.toFixed(
-					2
-				)} rad | Shadow Offset: (${shadowX.toFixed(1)}, ${shadowY.toFixed(1)})`
-			);
-
-			// Apply drop shadow dynamically
-			svg.style.filter = `drop-shadow(${shadowX}px ${shadowY}px 10px rgba(255, 255, 255, 1))`;
+		if (!parallaxElement) {
+			console.error('❌ Parallax element not found.');
+			return;
 		}
 
-		window.addEventListener('mousemove', updateShadow);
-	}
+		console.log('✅ Parallax effect initialized.');
 
-	function parallaxEffect() {
-		const parallaxContainer = document.querySelector('.parallax');
-		const parallaxElement = parallaxContainer.querySelector('.stacked-svgs');
+		// Rotation variables
+		let rotateX = 0,
+			rotateY = 0,
+			rotateZ = 0;
+		let targetRotateX = 0,
+			targetRotateY = 0,
+			targetRotateZ = 0;
+		let ticking = false;
+		let isMouseOver = false;
 
-		if (!parallaxElement) return;
+		// Rotation limits
+		const MAX_ROTATION = 20; // Maximum degrees of tilt
+		const MAX_Z_ROTATION = 10; // Subtle roll effect
 
-		parallaxContainer.addEventListener('mousemove', (event) => {
-			const { width, height, left, top } =
-				parallaxContainer.getBoundingClientRect();
+		// Perspective enhancement
+		parallaxElement.style.transformStyle = 'preserve-3d';
+		parallaxElement.style.transition = 'transform 0.1s ease-out';
 
-			// Get mouse position relative to the center of the container
-			const x = (event.clientX - left - width / 2) / width;
-			const y = (event.clientY - top - height / 2) / height;
+		// Handle mouse movement
+		trackingContainer.addEventListener(
+			'mousemove',
+			throttle((event) => {
+				const { width, height, left, top } =
+					trackingContainer.getBoundingClientRect();
 
-			// Adjust rotation values for a more dramatic effect
-			const rotateX = y * 50; // Increase intensity
-			const rotateY = x * -50;
+				// Normalized mouse position (-1 to 1)
+				const x = ((event.clientX - left) / width) * 2 - 1;
+				const y = ((event.clientY - top) / height) * 2 - 1;
 
-			parallaxElement.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+				// Corrected rotation mapping (opposite tilt)
+				targetRotateX = -y * MAX_ROTATION;
+				targetRotateY = x * MAX_ROTATION;
+				targetRotateZ = -x * MAX_Z_ROTATION;
+
+				isMouseOver = true;
+
+				// Start animation loop if not already running
+				if (!ticking) {
+					ticking = true;
+					requestAnimationFrame(updateTransform);
+				}
+			}, 16) // ~60FPS throttle
+		);
+
+		// Reset when mouse leaves
+		trackingContainer.addEventListener('mouseleave', () => {
+			targetRotateX = 0;
+			targetRotateY = 0;
+			targetRotateZ = 0;
+			isMouseOver = false;
+
+			// Ensure animation continues until fully reset
+			if (!ticking) {
+				ticking = true;
+				requestAnimationFrame(updateTransform);
+			}
 		});
 
-		parallaxContainer.addEventListener('mouseleave', () => {
-			// Reset rotation when mouse leaves
-			parallaxElement.style.transform = 'rotateX(0deg) rotateY(0deg)';
-		});
+		// Smooth transition effect using damping
+		function updateTransform() {
+			const dampingFactor = 0.1; // Smoothness control
+
+			rotateX += (targetRotateX - rotateX) * dampingFactor;
+			rotateY += (targetRotateY - rotateY) * dampingFactor;
+			rotateZ += (targetRotateZ - rotateZ) * dampingFactor;
+
+			// Apply transformation
+			parallaxElement.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`;
+
+			// Continue updating if movement is ongoing or resetting
+			if (
+				Math.abs(targetRotateX - rotateX) > 0.1 ||
+				Math.abs(targetRotateY - rotateY) > 0.1 ||
+				Math.abs(targetRotateZ - rotateZ) > 0.1
+			) {
+				requestAnimationFrame(updateTransform);
+			} else {
+				ticking = false;
+			}
+		}
 	}
 
-	function borderHighlightEffect() {
-		document.addEventListener('mousemove', (event) => {
-			const svg = document.getElementById('highlight-svg');
-			const gradient = document.getElementById('light-gradient');
-
-			const rect = svg.getBoundingClientRect();
-			const x = (event.clientX - rect.left) / rect.width;
-			const y = (event.clientY - rect.top) / rect.height;
-
-			gradient.setAttribute('fx', x);
-			gradient.setAttribute('fy', y);
-		});
+	// Throttle function to limit event frequency
+	function throttle(callback, limit) {
+		let lastCall = 0;
+		return function (...args) {
+			const now = performance.now();
+			if (now - lastCall >= limit) {
+				lastCall = now;
+				callback.apply(this, args);
+			}
+		};
 	}
 
-	// Run the functions
-
-	mouseTrackingDropShadow();
-	parallaxEffect();
-	borderHighlightEffect();
+	mouseTrackingParallax();
 });
