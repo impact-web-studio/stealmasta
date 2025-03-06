@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Citizens & Thieves - Coming Soon</title>
+		<style>
+			/* Base styles */
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				font-family: 'Times New Roman', serif;
+			}
+
+			body {
+				background-color: #1a2a2a;
+				color: white;
+				overflow: hidden;
+				height: 100vh;
+				position: relative;
+			}
+
+			.bg-texture {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-image: url('/api/placeholder/1920/1080');
+				background-size: cover;
+				opacity: 0.4;
+				z-index: -1;
+			}
+
+			/* Logo styles */
+			.logo-container {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				z-index: 10;
+				/* Important: Initial state with no transitions */
+			}
+
+			.logo-inner {
+				position: relative;
+				width: 200px;
+				height: 200px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				z-index: 2;
+			}
+
+			.logo-shadow {
+				position: absolute;
+				width: 210px;
+				height: 210px;
+				background-color: rgba(0, 0, 0, 0.5);
+				border-radius: 25%;
+				filter: blur(10px);
+				z-index: 1;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+
+			.logo-svg-outer {
+				position: absolute;
+				width: 200px;
+				height: 200px;
+				z-index: 3;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+
+			.logo-svg-inner {
+				position: absolute;
+				width: 160px;
+				height: 160px;
+				z-index: 4;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+
+			.logo-outer {
+				position: absolute;
+				width: 300px;
+				height: 300px;
+				border: 2px solid #e6a829;
+				border-radius: 50%;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				z-index: 1;
+			}
+
+			.dots {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+			}
+
+			.dot {
+				position: absolute;
+				width: 10px;
+				height: 10px;
+				background-color: white;
+				border-radius: 50%;
+			}
+
+			.glowing-dot {
+				position: absolute;
+				width: 16px;
+				height: 16px;
+				background-color: #e6a829;
+				border-radius: 50%;
+				border: 2px solid white;
+			}
+
+			/* Content area */
+			.content {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				opacity: 0;
+				visibility: hidden;
+				text-align: center;
+				z-index: 5;
+				width: 90%;
+				max-width: 500px;
+				transition:
+					opacity 1s ease,
+					visibility 1s ease;
+			}
+
+			.title {
+				font-size: 3.2rem;
+				margin-bottom: 20px;
+				letter-spacing: 2px;
+				font-weight: normal;
+			}
+
+			.subtitle {
+				font-size: 1.5rem;
+				margin-bottom: 10px;
+				letter-spacing: 1px;
+			}
+
+			.newsletter-info {
+				font-size: 1.2rem;
+				margin-bottom: 30px;
+				letter-spacing: 0.5px;
+			}
+
+			.form-group {
+				margin-bottom: 15px;
+				text-align: left;
+			}
+
+			.form-group label {
+				display: block;
+				font-size: 1.2rem;
+				margin-bottom: 5px;
+			}
+
+			.form-group input {
+				width: 100%;
+				padding: 10px;
+				background-color: rgba(255, 255, 255, 0.1);
+				border: none;
+				color: white;
+				font-size: 1rem;
+			}
+
+			.subscribe-btn {
+				padding: 10px 30px;
+				background-color: transparent;
+				color: white;
+				border: 2px solid white;
+				cursor: pointer;
+				font-size: 1rem;
+				transition: all 0.3s ease;
+				margin-top: 20px;
+			}
+
+			.subscribe-btn:hover {
+				background-color: rgba(255, 255, 255, 0.1);
+			}
+
+			.coming-soon {
+				font-size: 1rem;
+				letter-spacing: 2px;
+				margin-bottom: 10px;
+			}
+
+			/* Header for after animation */
+			.header {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				padding: 20px;
+				display: flex;
+				justify-content: space-between;
+				opacity: 0;
+				transition: opacity 1s ease;
+			}
+
+			.header-logo {
+				display: flex;
+				align-items: center;
+			}
+
+			.header-title {
+				font-size: 1.5rem;
+				margin-left: 15px;
+			}
+
+			/* Animation classes */
+			.rotate {
+				animation: rotate 20s linear infinite;
+			}
+
+			.float {
+				animation: float 4s ease-in-out infinite;
+			}
+
+			.flicker {
+				animation: flicker 3s ease-in-out infinite;
+			}
+
+			@keyframes rotate {
+				0% {
+					transform: translate(-50%, -50%) rotate(0deg);
+				}
+				100% {
+					transform: translate(-50%, -50%) rotate(360deg);
+				}
+			}
+
+			@keyframes float {
+				0%,
+				100% {
+					transform: translateY(0);
+				}
+				50% {
+					transform: translateY(-15px);
+				}
+			}
+
+			@keyframes flicker {
+				0%,
+				100% {
+					opacity: 1;
+				}
+				50% {
+					opacity: 0.7;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="bg-texture"></div>
+
+		<!-- Header (will appear after animation) -->
+		<div
+			class="header"
+			id="header"
+		>
+			<div class="header-logo">
+				<div class="company-logo"></div>
+				<h2 class="header-title">CITIZENS & THIEVES</h2>
+			</div>
+		</div>
+
+		<!-- Logo -->
+		<div
+			class="logo-container"
+			id="logoContainer"
+		>
+			<div
+				class="logo-inner"
+				id="logoInner"
+			>
+				<div class="logo-shadow"></div>
+				<div class="logo-svg-outer">
+					<!-- Outer SVG placeholder -->
+					<svg
+						viewBox="0 0 200 200"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<rect
+							x="0"
+							y="0"
+							width="200"
+							height="200"
+							rx="25"
+							fill="black"
+						/>
+					</svg>
+				</div>
+				<div class="logo-svg-inner">
+					<!-- Inner SVG placeholder -->
+					<svg
+						viewBox="0 0 160 160"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<rect
+							x="0"
+							y="0"
+							width="160"
+							height="160"
+							rx="20"
+							fill="#e6a829"
+						/>
+						<text
+							x="80"
+							y="85"
+							text-anchor="middle"
+							fill="black"
+							font-size="16"
+							font-weight="bold"
+						>
+							CITIZEN
+						</text>
+					</svg>
+				</div>
+			</div>
+			<div
+				class="logo-outer rotate"
+				id="logoOuter"
+			>
+				<div
+					class="dots"
+					id="dots"
+				></div>
+			</div>
+		</div>
+
+		<!-- Content area -->
+		<div
+			class="content"
+			id="content"
+		>
+			<p class="coming-soon">COMING SOON</p>
+			<h1 class="title">
+				CITIZENS & THIEVES<span style="font-size: 1rem; vertical-align: super"
+					>TM</span
+				>
+			</h1>
+			<h2 class="subtitle">GET NOTIFIED</h2>
+			<p class="newsletter-info">SUBSCRIBE FOR THE LATEST NEWS & UPDATES</p>
+
+			<form id="newsletterForm">
+				<div class="form-group">
+					<label for="name">NAME..........</label>
+					<input
+						type="text"
+						id="name"
+						required
+					/>
+				</div>
+				<div class="form-group">
+					<label for="email">EMAIL..........</label>
+					<input
+						type="email"
+						id="email"
+						required
+					/>
+				</div>
+				<button
+					type="submit"
+					class="subscribe-btn"
+				>
+					SUBSCRIBE
+				</button>
+			</form>
+		</div>
+
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				// Create dots around the logo outer ring
+				const dotsContainer = document.getElementById('dots');
+				const numberOfDots = 24;
+				const numberOfGlowingDots = 24;
+
+				// Create white dots
+				for (let i = 0; i < numberOfDots; i++) {
+					const dot = document.createElement('div');
+					dot.classList.add('dot');
+
+					const angle = (i / numberOfDots) * 2 * Math.PI;
+					const radius = 145; // Radius from center to dots
+
+					const x = 150 + radius * Math.cos(angle);
+					const y = 150 + radius * Math.sin(angle);
+
+					dot.style.left = `${x}px`;
+					dot.style.top = `${y}px`;
+
+					dotsContainer.appendChild(dot);
+				}
+
+				// Create glowing dots
+				for (let i = 0; i < numberOfGlowingDots; i++) {
+					const glowingDot = document.createElement('div');
+					glowingDot.classList.add('glowing-dot');
+
+					const angle = (i / numberOfGlowingDots) * 2 * Math.PI;
+					const radius = 145; // Same radius for alignment
+
+					// Offset angle to place these dots between the white dots
+					const offsetAngle = angle + Math.PI / numberOfGlowingDots;
+
+					const x = 150 + radius * Math.cos(offsetAngle);
+					const y = 150 + radius * Math.sin(offsetAngle);
+
+					glowingDot.style.left = `${x}px`;
+					glowingDot.style.top = `${y}px`;
+
+					dotsContainer.appendChild(glowingDot);
+				}
+
+				// Add initial animations
+				const logoInner = document.getElementById('logoInner');
+				logoInner.classList.add('float', 'flicker');
+
+				// Start transitions after 3 seconds
+				setTimeout(function () {
+					const logoContainer = document.getElementById('logoContainer');
+					const content = document.getElementById('content');
+					const header = document.getElementById('header');
+
+					// Remove floating and flickering animations
+					logoInner.classList.remove('float', 'flicker');
+
+					// First - apply transition styling before changing classes
+					// This ensures the transition is smooth
+					logoContainer.style.transition =
+						'all 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)';
+
+					// Apply different transitions based on screen size
+					if (window.innerWidth <= 768) {
+						// Mobile transition
+						logoContainer.style.top = '30px';
+						logoContainer.style.left = '20px';
+						logoContainer.style.transform = 'scale(0.15)';
+						logoContainer.style.transformOrigin = 'left top';
+					} else {
+						// Desktop transition
+						logoContainer.style.top = '50%';
+						logoContainer.style.left = 'auto';
+						logoContainer.style.right = '100px';
+						logoContainer.style.transform = 'translate(0, -50%) scale(0.7)'; // Increased size for desktop
+						logoContainer.style.transformOrigin = 'center center';
+					}
+
+					// Show content with a slight delay
+					setTimeout(function () {
+						content.style.opacity = '1';
+						content.style.visibility = 'visible';
+						header.style.opacity = '1';
+					}, 500);
+				}, 3000); // 3 second delay
+
+				// Handle window resize
+				window.addEventListener('resize', function () {
+					const logoContainer = document.getElementById('logoContainer');
+
+					// Only apply if the transition has already happened
+					if (logoContainer.style.transition) {
+						if (window.innerWidth <= 768) {
+							logoContainer.style.top = '30px';
+							logoContainer.style.left = '20px';
+							logoContainer.style.right = 'auto';
+							logoContainer.style.transform = 'scale(0.15)';
+							logoContainer.style.transformOrigin = 'left top';
+						} else {
+							logoContainer.style.top = '50%';
+							logoContainer.style.left = 'auto';
+							logoContainer.style.right = '100px';
+							logoContainer.style.transform = 'translate(0, -50%) scale(0.7)';
+							logoContainer.style.transformOrigin = 'center center';
+						}
+					}
+				});
+
+				// Form submission
+				document
+					.getElementById('newsletterForm')
+					.addEventListener('submit', function (e) {
+						e.preventDefault();
+						const name = document.getElementById('name').value;
+						const email = document.getElementById('email').value;
+
+						// Here you would typically send data to your backend
+						alert(
+							`Thank you, ${name}! Your email (${email}) has been registered.`
+						);
+					});
+			});
+		</script>
+	</body>
+</html>

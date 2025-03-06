@@ -110,5 +110,10 @@ document.addEventListener('DOMContentLoaded', function () {
 		};
 	}
 
+	function removeAnimation() {
+		const overlay = document.querySelector('.overlay');
+		overlay.classList.add('no-animation');
+	}
+
 	mouseTrackingParallax();
 });

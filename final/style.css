@@ -1,0 +1,233 @@
+/* Base styles */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Times New Roman', serif;
+}
+
+body {
+	background-color: #1a2a2a;
+	color: white;
+	overflow: hidden;
+	height: 100vh;
+	position: relative;
+}
+
+.bg-texture {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url('./background-image.webp');
+	background-size: cover;
+	opacity: 1;
+	z-index: -1;
+}
+
+/* Logo styles */
+.logo-container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 10;
+	/* Important: Initial state with no transitions */
+}
+
+.logo-inner {
+	position: relative;
+	width: fit-content;
+	height: fit-content;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 2;
+}
+
+.logo-shadow {
+	position: absolute;
+	width: 210px;
+	height: 210px;
+	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 25%;
+	filter: blur(10px);
+	z-index: 1;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.logo-svg-outer {
+	position: absolute;
+	width: fit-content;
+	height: fit-content;
+	z-index: 3;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.logo-svg-inner {
+	position: absolute;
+	width: fit-content;
+	height: fit-content;
+	z-index: 4;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.logo-outer {
+	position: absolute;
+	width: 300px;
+	height: 300px;
+	border-radius: 50%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1;
+}
+
+/* Content area */
+.content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	opacity: 0;
+	visibility: hidden;
+	text-align: center;
+	z-index: 5;
+	width: 90%;
+	max-width: 500px;
+	transition:
+		opacity 1s ease,
+		visibility 1s ease;
+}
+
+.title {
+	font-size: 3.2rem;
+	margin-bottom: 20px;
+	letter-spacing: 2px;
+	font-weight: normal;
+}
+
+.subtitle {
+	font-size: 1.5rem;
+	margin-bottom: 10px;
+	letter-spacing: 1px;
+}
+
+.newsletter-info {
+	font-size: 1.2rem;
+	margin-bottom: 30px;
+	letter-spacing: 0.5px;
+}
+
+.form-group {
+	margin-bottom: 15px;
+	text-align: left;
+}
+
+.form-group label {
+	display: block;
+	font-size: 1.2rem;
+	margin-bottom: 5px;
+}
+
+.form-group input {
+	width: 100%;
+	padding: 10px;
+	background-color: rgba(255, 255, 255, 0.1);
+	border: none;
+	color: white;
+	font-size: 1rem;
+}
+
+.subscribe-btn {
+	padding: 10px 30px;
+	background-color: transparent;
+	color: white;
+	border: 2px solid white;
+	cursor: pointer;
+	font-size: 1rem;
+	transition: all 0.3s ease;
+	margin-top: 20px;
+}
+
+.subscribe-btn:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.coming-soon {
+	font-size: 1rem;
+	letter-spacing: 2px;
+	margin-bottom: 10px;
+}
+
+/* Header for after animation */
+.header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 20px;
+	display: flex;
+	justify-content: space-between;
+	opacity: 0;
+	transition: opacity 1s ease;
+}
+
+.header-logo {
+	display: flex;
+	align-items: center;
+}
+
+.header-title {
+	font-size: 1.5rem;
+	margin-left: 15px;
+}
+
+/* Animation classes */
+.rotate {
+	animation: rotate 20s linear infinite;
+}
+
+.float {
+	animation: float 4s ease-in-out infinite;
+}
+
+.flicker {
+	animation: flicker 3s ease-in-out infinite;
+}
+
+@keyframes rotate {
+	0% {
+		transform: translate(-50%, -50%) rotate(0deg);
+	}
+	100% {
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
+}
+
+@keyframes float {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-15px);
+	}
+}
+
+@keyframes flicker {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.7;
+	}
+}

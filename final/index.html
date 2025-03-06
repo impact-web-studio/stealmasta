@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<link
+			rel="stylesheet"
+			href="style.css"
+		/>
+		<script src="script.js"></script>
+		<title>Citizens & Thieves - Coming Soon</title>
+	</head>
+	<body>
+		<div class="bg-texture"></div>
+
+		<!-- Header (will appear after animation) -->
+		<div
+			class="header"
+			id="header"
+		>
+			<div class="header-logo">
+				<div class="company-logo"></div>
+				<h2 class="header-title">CITIZENS & THIEVES</h2>
+			</div>
+		</div>
+
+		<!-- Logo -->
+		<div
+			class="logo-container"
+			id="logoContainer"
+		>
+			<div
+				class="logo-inner"
+				id="logoInner"
+			>
+				<div class="logo-shadow"></div>
+				<div class="logo-svg-outer">
+					<object
+						class="outerCrestLogo"
+						data="/assets/final_imgs/all-svgs/outer-crest.svg"
+						type="image/svg+xml"
+						width="250"
+						height="250"
+					></object>
+				</div>
+				<div class="logo-svg-inner">
+					<object
+						class="innerCrestLogo"
+						data="/assets/final_imgs/all-svgs/inner-crest.svg"
+						type="image/svg+xml"
+						width="250"
+						height="250"
+					></object>
+				</div>
+			</div>
+			<div
+				class="logo-outer rotate"
+				id="logoOuter"
+			>
+				<div
+					class="dots"
+					id="dots"
+				></div>
+			</div>
+		</div>
+
+		<!-- Content area -->
+		<div
+			class="content"
+			id="content"
+		>
+			<p class="coming-soon">COMING SOON</p>
+			<h1 class="title">
+				CITIZENS & THIEVES<span style="font-size: 1rem; vertical-align: super"
+					>TM</span
+				>
+			</h1>
+			<h2 class="subtitle">GET NOTIFIED</h2>
+			<p class="newsletter-info">SUBSCRIBE FOR THE LATEST NEWS & UPDATES</p>
+
+			<form id="newsletterForm">
+				<div class="form-group">
+					<label for="name">NAME..........</label>
+					<input
+						type="text"
+						id="name"
+						required
+					/>
+				</div>
+				<div class="form-group">
+					<label for="email">EMAIL..........</label>
+					<input
+						type="email"
+						id="email"
+						required
+					/>
+				</div>
+				<button
+					type="submit"
+					class="subscribe-btn"
+				>
+					SUBSCRIBE
+				</button>
+			</form>
+		</div>
+	</body>
+</html>
