@@ -1,6 +1,17 @@
 document.addEventListener('DOMContentLoaded', function () {
 	// Add initial animations
-	const logoInner = document.getElementById('logoInner');
+	const logoInner = document.querySelector('.innerCrestLogo');
+	var logoScaleFactor = {};
+
+	logoInner.addEventListener('load', function () {
+		logoBaseHeight = logoInner.getBoundingClientRect().height;
+		console.log('After Load:', logoBaseHeight); // Correct value
+		logoScaleFactor = {
+			desktop: window.innerHeight / logoBaseHeight,
+			mobile: 0.2,
+		};
+	});
+
 	logoInner.classList.add('float', 'flicker');
 
 	// Calculate positions for smooth transition
@@ -20,8 +31,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	};
 
 	const finalPositionMobile = {
-		left: 48,
-		top: 42,
+		left: 50,
+		top: 46,
 	};
 
 	// Start transitions after 3 seconds
@@ -47,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			// Desktop transition - use absolute pixel values instead of 'auto'
 			logoContainer.style.top = finalPositionDesktop.top + 'px';
 			logoContainer.style.left = finalPositionDesktop.left + 'px';
-			logoContainer.style.transform = 'translate(-50%, -50%) scale(3)';
+			logoContainer.style.transform = `translate(-50%, -50%) scale(${logoScaleFactor.desktop})`;
 			logoContainer.style.transformOrigin = 'center center';
 		}
 
@@ -68,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			if (window.innerWidth <= 768) {
 				logoContainer.style.top = '30px';
 				logoContainer.style.left = '20px';
-				logoContainer.style.transform = 'scale(0.15)';
+				logoContainer.style.transform = 'scale(0.2)';
 				logoContainer.style.transformOrigin = 'left top';
 			} else {
 				const finalPositionDesktop = {
@@ -78,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 				logoContainer.style.top = finalPositionDesktop.top + 'px';
 				logoContainer.style.left = finalPositionDesktop.left + 'px';
-				logoContainer.style.transform = 'translate(-50%, -50%) scale(2.5)';
+				logoContainer.style.transform = `translate(-50%, -50%) scale(${logoScaleFactor.desktop})`;
 				logoContainer.style.transformOrigin = 'center center';
 			}
 		}

@@ -234,6 +234,7 @@ body {
 
 .coming-soon {
 	font-size: 1rem;
+	font-family: 'Colonna MT', serif;
 	letter-spacing: 2px;
 	margin-bottom: 10px;
 }
@@ -258,12 +259,13 @@ body {
 
 .header-title {
 	/* font-size: 1.5rem; */
+	font-family: 'Colonna MT', sans-serif;
 	margin-left: 40px;
 	text-align: center;
 }
 
 .header-title span {
-	font-family: 'Century Gothic', sans-serif;
+	font-family: 'Dungeon', sans-serif;
 	text-transform: uppercase;
 }
 .steal {
