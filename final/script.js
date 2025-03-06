@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	};
 
 	const finalPositionMobile = {
-		left: 20,
-		top: 30,
+		left: 48,
+		top: 42,
 	};
 
 	// Start transitions after 3 seconds
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			// Mobile transition - use absolute pixel values
 			logoContainer.style.top = finalPositionMobile.top + 'px';
 			logoContainer.style.left = finalPositionMobile.left + 'px';
-			logoContainer.style.transform = 'scale(0.15)';
+			logoContainer.style.transform = 'scale(0.2)';
 			logoContainer.style.transformOrigin = 'left top';
 		} else {
 			// Desktop transition - use absolute pixel values instead of 'auto'

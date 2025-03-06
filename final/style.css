@@ -1,3 +1,52 @@
+/*** Import Fonts ***/
+@font-face {
+	font-family: 'Colonna MT';
+	font-style: normal;
+	font-weight: normal;
+	src: url('/assets/fonts/COLONNA.woff') format('woff');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Dungeon';
+	font-style: normal;
+	font-weight: normal;
+	src: url('/assets/fonts/DUNGEON.ttf') format('truetype'); /* Fixing typo from .tff to .ttf */
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Century Gothic';
+	font-style: normal;
+	font-weight: normal;
+	src: url('/assets/fonts/Century Gothic/Century Gothic.ttf') format('truetype');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Century Gothic';
+	font-style: normal;
+	font-weight: bold;
+	src: url('/assets/fonts/Century Gothic/GOTHICB.ttf') format('truetype');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Century Gothic';
+	font-style: italic;
+	font-weight: normal;
+	src: url('/assets/fonts/Century Gothic/GOTHICI.ttf') format('truetype');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Century Gothic';
+	font-style: italic;
+	font-weight: bold;
+	src: url('/assets/fonts/Century Gothic/GOTHICBI.ttf') format('truetype');
+	font-display: swap;
+}
+
 /* Base styles */
 * {
 	margin: 0;
@@ -197,7 +246,7 @@ body {
 	width: 100%;
 	padding: 20px;
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	opacity: 0;
 	transition: opacity 1s ease;
 }
@@ -208,8 +257,32 @@ body {
 }
 
 .header-title {
+	/* font-size: 1.5rem; */
+	margin-left: 40px;
+	text-align: center;
+}
+
+.header-title span {
+	font-family: 'Century Gothic', sans-serif;
+	text-transform: uppercase;
+}
+.steal {
 	font-size: 1.5rem;
-	margin-left: 15px;
+	font-weight: 500;
+	letter-spacing: 0.1em;
+}
+
+.masta {
+	letter-spacing: 0.1em;
+	font-size: 0.75rem;
+	font-weight: 500;
+}
+
+.studio {
+	display: block;
+	font-size: 0.5rem;
+	letter-spacing: 0.875em;
+	font-weight: 400;
 }
 
 /* Animation classes */
