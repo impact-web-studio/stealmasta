@@ -1,31 +1,26 @@
-/*** Import Fonts ***/
+/* =============================
+   Fonts
+   ============================= */
 @font-face {
 	font-family: 'Colonna MT';
-	font-style: normal;
-	font-weight: normal;
 	src: url('/assets/fonts/COLONNA.woff') format('woff');
 	font-display: swap;
 }
 
 @font-face {
 	font-family: 'Dungeon';
-	font-style: normal;
-	font-weight: normal;
-	src: url('/assets/fonts/DUNGEON.ttf') format('truetype'); /* Fixing typo from .tff to .ttf */
+	src: url('/assets/fonts/DUNGEON.ttf') format('truetype');
 	font-display: swap;
 }
 
 @font-face {
 	font-family: 'Century Gothic';
-	font-style: normal;
-	font-weight: normal;
 	src: url('/assets/fonts/Century Gothic/Century Gothic.ttf') format('truetype');
 	font-display: swap;
 }
 
 @font-face {
 	font-family: 'Century Gothic';
-	font-style: normal;
 	font-weight: bold;
 	src: url('/assets/fonts/Century Gothic/GOTHICB.ttf') format('truetype');
 	font-display: swap;
@@ -34,7 +29,6 @@
 @font-face {
 	font-family: 'Century Gothic';
 	font-style: italic;
-	font-weight: normal;
 	src: url('/assets/fonts/Century Gothic/GOTHICI.ttf') format('truetype');
 	font-display: swap;
 }
@@ -47,7 +41,9 @@
 	font-display: swap;
 }
 
-/* Base styles */
+/* =============================
+   Base Styles
+   ============================= */
 * {
 	margin: 0;
 	padding: 0;
@@ -65,34 +61,21 @@ body {
 
 .bg-texture {
 	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-image: url('./background-image.webp');
-	background-size: cover;
+	inset: 0;
+	background: url('./background-image.webp') no-repeat center/cover;
 	opacity: 1;
 	z-index: -1;
 }
 
-/* Logo styles */
+/* =============================
+   Logo
+   ============================= */
 .logo-container {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 10;
-	/* Important: Initial state with no transitions */
-}
-
-.logo-inner {
-	position: relative;
-	width: fit-content;
-	height: fit-content;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	z-index: 2;
 }
 
 .logo-shadow {
@@ -100,82 +83,67 @@ body {
 	width: 100px;
 	height: 250px;
 	background-color: rgba(0, 0, 0, 0.5);
-	border-radius: 100%;
+	border-radius: 50%;
 	filter: blur(10px);
-	z-index: 10;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
 
-.logo-svg-outer {
+.logo-svg-outer,
+.logo-svg-inner,
+.logo-outer {
 	position: absolute;
-	width: fit-content;
-	height: fit-content;
-	z-index: 3;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-
-.logo-svg-inner {
-	position: absolute;
-	width: fit-content;
-	height: fit-content;
-	z-index: 4;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
 
 .logo-outer {
-	position: absolute;
 	width: 300px;
 	height: 300px;
 	border-radius: 50%;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
 	z-index: 1;
 }
 
-/* Content area */
+/* =============================
+   Content
+   ============================= */
 .content {
-	/* position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-100%, -50%); */
 	display: flex;
 	flex-direction: column;
-	padding: 8rem 1rem 2rem 1rem;
-	opacity: 0;
-	visibility: hidden;
+	padding: 8rem 1rem 2rem;
 	text-align: center;
-	z-index: 5;
 	width: 100%;
 	max-width: 500px;
+	opacity: 0;
+	visibility: hidden;
 	transition:
 		opacity 1s ease,
 		visibility 1s ease;
+	z-index: 5;
+	margin-inline: auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
-@media screen and (width >= 768px) {
-	/* Content area */
+@media screen and (width >= 1024px) {
 	.content {
-		position: absolute;
-		top: 50%;
-		left: 50%;
 		transform: translate(-100%, -50%);
-		opacity: 0;
-		visibility: hidden;
-		text-align: center;
-		z-index: 5;
-		width: 90%;
-		max-width: 500px;
-		transition:
-			opacity 1s ease,
-			visibility 1s ease;
+		left: 50%;
 	}
+}
+
+/* =============================
+   Typography
+   ============================= */
+.title,
+.title span,
+.subtitle,
+.coming-soon {
+	font-family: 'Colonna MT', serif;
 }
 
 .title {
@@ -183,18 +151,12 @@ body {
 	margin-bottom: 20px;
 	letter-spacing: 2px;
 	font-weight: normal;
-	font-family: 'Colonna MT', serif;
-}
-
-.title span {
-	font-family: 'Colonna MT', serif;
 }
 
 .subtitle {
 	font-size: 1.5rem;
 	margin-bottom: 10px;
 	letter-spacing: 1px;
-	font-family: 'Colonna MT', serif;
 }
 
 .newsletter-info {
@@ -204,6 +166,15 @@ body {
 	font-family: 'Dungeon', serif;
 }
 
+.coming-soon {
+	font-size: 1rem;
+	letter-spacing: 2px;
+	margin-bottom: 10px;
+}
+
+/* =============================
+   Form Elements
+   ============================= */
 .form-group {
 	margin-bottom: 15px;
 	text-align: left;
@@ -224,6 +195,9 @@ body {
 	font-size: 1rem;
 }
 
+/* =============================
+   Buttons
+   ============================= */
 .subscribe-btn {
 	padding: 10px 30px;
 	background-color: transparent;
@@ -231,7 +205,7 @@ body {
 	border: 2px solid white;
 	cursor: pointer;
 	font-size: 1rem;
-	transition: all 0.3s ease;
+	transition: background-color 0.3s ease;
 	margin-top: 20px;
 }
 
@@ -239,14 +213,9 @@ body {
 	background-color: rgba(255, 255, 255, 0.1);
 }
 
-.coming-soon {
-	font-size: 1rem;
-	font-family: 'Colonna MT', serif;
-	letter-spacing: 2px;
-	margin-bottom: 10px;
-}
-
-/* Header for after animation */
+/* =============================
+   Header
+   ============================= */
 .header {
 	position: absolute;
 	top: 0;
@@ -264,19 +233,9 @@ body {
 	align-items: center;
 }
 
-/* Animation classes */
-.rotate {
-	animation: rotate 360s linear infinite;
-}
-
-.float {
-	animation: float 4s ease-in-out infinite;
-}
-
-.flicker {
-	animation: flicker 3s ease-in-out infinite;
-}
-
+/* =============================
+   Animations
+   ============================= */
 @keyframes rotate {
 	0% {
 		transform: translate(-50%, -50%) rotate(0deg);
@@ -304,4 +263,14 @@ body {
 	50% {
 		opacity: 0.7;
 	}
+}
+
+.rotate {
+	animation: rotate 360s linear infinite;
+}
+.float {
+	animation: float 4s ease-in-out infinite;
+}
+.flicker {
+	animation: flicker 3s ease-in-out infinite;
 }
