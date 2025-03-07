@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	const logoInner = document.querySelector('.innerCrestLogo');
 	const logoOuter = document.querySelector('.outerCrestLogo');
 	const logoContainer = document.getElementById('logoContainer');
-	const shadowContainer = document.querySelector('#logoContainer');
 	const content = document.getElementById('content');
 	const header = document.getElementById('header');
 	const form = document.getElementById('newsletterForm');
@@ -45,9 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
 			? 'left top'
 			: 'center center';
 
+		logoContainer.classList.add('no-after');
 		// Show content after transition delay
 		setTimeout(() => {
-			logoContainer.classList.add('no-after');
 			content.style.opacity = '1';
 			content.style.visibility = 'visible';
 			header.style.opacity = '1';
