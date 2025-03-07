@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 	const logoInner = document.querySelector('.innerCrestLogo');
+	const logoOuter = document.querySelector('.outerCrestLogo');
 	const logoContainer = document.getElementById('logoContainer');
+	const shadowContainer = document.querySelector('#logoContainer');
 	const content = document.getElementById('content');
 	const header = document.getElementById('header');
 	const form = document.getElementById('newsletterForm');
@@ -13,7 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	};
 
 	// Add initial animations
-	logoInner.classList.add('float', 'flicker');
+	logoInner.classList.add('floatFlicker');
+	logoOuter.classList.add('floatFlicker');
 
 	// Position configurations
 	const finalPositions = {
@@ -23,7 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	// Start transition after delay
 	setTimeout(() => {
-		logoInner.classList.remove('float', 'flicker');
+		logoInner.classList.remove('floatFlicker');
+		logoOuter.classList.remove('floatFlicker');
 		logoContainer.style.transition =
 			'all 1.2s cubic-bezier(0.3, -0.05, 0.5, 0.85)';
 
@@ -43,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		// Show content after transition delay
 		setTimeout(() => {
+			logoContainer.classList.add('no-after');
 			content.style.opacity = '1';
 			content.style.visibility = 'visible';
 			header.style.opacity = '1';
