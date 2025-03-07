@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			content.style.visibility = 'visible';
 			header.style.opacity = '1';
 		}, 500);
-	}, 3000);
+	}, 5000);
 
 	// Handle window resize efficiently
 	window.addEventListener('resize', () => {

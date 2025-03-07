@@ -265,9 +265,14 @@ body {
 	}
 }
 
-.rotate {
+.rotateSlow {
 	animation: rotate 360s linear infinite;
 }
+
+.rotateFast {
+	animation: rotate 180s linear infinite;
+}
+
 .float {
 	animation: float 4s ease-in-out infinite;
 }
