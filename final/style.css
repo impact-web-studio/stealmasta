@@ -59,6 +59,11 @@ body {
 	position: relative;
 }
 
+main {
+	height: 100%;
+	width: 100%;
+}
+
 .bg-texture {
 	position: absolute;
 	inset: 0;
@@ -99,11 +104,11 @@ body {
 	border-radius: 50%;
 	background: transparent;
 	filter: blur(6px);
-	animation: shadowPulse 3s ease-in-out infinite;
+	animation: shadowPulse 2800ms ease-in-out forwards;
 }
 
 .logo-container.no-after::after {
-	animation: fadeOut 2s ease-in-out forwards;
+	animation: fadeOut 1800ms ease-in-out forwards;
 }
 
 @keyframes fadeOut {
@@ -137,6 +142,10 @@ body {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	opacity: 0.85;
+}
+
+.innerCrestLogo {
+	opacity: 0.8;
 }
 
 .logo-outer {
@@ -340,22 +349,22 @@ body {
 	animation: float 2s ease-in-out infinite;
 }
 .flicker {
-	animation: flicker 3s ease-in-out forwards;
+	animation: flicker 2800ms ease-in-out forwards;
 }
 
 .floatFlicker {
 	animation:
-		float 3s ease-in-out infinite,
-		flicker 3s ease-in-out forwards alternate;
+		float 2800ms ease-in-out infinite,
+		flicker 2800ms ease-in-out forwards alternate;
 }
 
 .floatFlickerRotate {
 	animation:
-		float 3s ease-in-out infinite,
-		flicker 3s infinite alternate,
+		float 2800ms ease-in-out infinite,
+		flicker 2800ms infinite alternate,
 		rotate 60s linear infinite;
 }
 
 .shadowPulse {
-	animation: shadowPulse 3s ease-in-out infinite;
+	animation: shadowPulse 2800ms ease-in-out infinite;
 }
