@@ -70,6 +70,11 @@ body {
 /* =============================
    Logo
    ============================= */
+
+.company-logo {
+	pointer-events: none;
+}
+
 .logo-container {
 	position: absolute;
 	top: 50%;
@@ -278,6 +283,7 @@ body {
 .header-logo {
 	display: flex;
 	align-items: center;
+	z-index: 500;
 }
 
 /* =============================
