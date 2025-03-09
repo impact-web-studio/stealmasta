@@ -6,13 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const content = document.getElementById('content');
 	const header = document.getElementById('header');
 	const form = document.getElementById('newsletterForm');
-	let logoScaleFactor = { desktop: 1, mobile: 0.2 };
-
-	// Ensure proper scaling once the logo image loads
-	logoInner.onload = () => {
-		const logoBaseHeight = logoInner.getBoundingClientRect().height;
-		logoScaleFactor.desktop = window.innerHeight / logoBaseHeight;
-	};
+	const logoScaleFactor = { desktop: window.innerHeight / 250, mobile: 0.2 };
 
 	// Add initial animations
 	logoInner.classList.add('floatFlicker');
