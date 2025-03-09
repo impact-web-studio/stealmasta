@@ -48,23 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		}, 500);
 	}, 3000);
 
-	// Handle window resize efficiently
-	window.addEventListener('resize', () => {
-		if (!logoContainer.style.transition) return;
-
-		const isMobile = window.innerWidth < 1024;
-		logoContainer.style.top = isMobile ? '30px' : `${window.innerHeight / 2}px`;
-		logoContainer.style.left = isMobile
-			? '20px'
-			: `${window.innerWidth - 100}px`;
-		logoContainer.style.transform = isMobile
-			? 'scale(0.2)'
-			: `translate(-50%, -50%) scale(${logoScaleFactor.desktop})`;
-		logoContainer.style.transformOrigin = isMobile
-			? 'left top'
-			: 'center center';
-	});
-
 	// Handle mouse movement
 	function mouseTrackingParallax() {
 		const trackingContainer = document.querySelector('main');
