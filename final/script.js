@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const content = document.getElementById('content');
 	const header = document.getElementById('header');
 	const form = document.getElementById('newsletterForm');
-	const logoScaleFactor = { desktop: window.innerHeight / 250, mobile: 0.2 };
+	const logoScaleFactor = { desktop: window.innerHeight / 375, mobile: 0.2 };
 
 	// Add initial animations
 	logoInner.classList.add('floatFlicker');
