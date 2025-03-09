@@ -56,7 +56,7 @@ body {
 	color: white;
 	overflow-x: hidden;
 	overflow-y: scroll;
-	height: 100vh;
+	height: 100dvh;
 	position: relative;
 }
 
