@@ -215,7 +215,7 @@ main {
    ============================= */
 .title {
 	font-size: clamp(3.2rem, 1.8286rem + 6.8571vw, 8rem);
-	margin: 1.5rem 0px 3rem 0px;
+	margin: clamp(1rem, 0.8571rem + 0.7143vw, 1.5rem) 0px 3rem 0px;
 	letter-spacing: 2px;
 	font-weight: normal;
 	font-family: 'Colonna MT', serif;
