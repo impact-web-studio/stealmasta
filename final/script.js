@@ -1,11 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
 	// Logo Animations
+
+	// Get elements
 	const logoInner = document.querySelector('.innerCrestLogo');
 	const logoOuter = document.querySelector('.outerCrestLogo');
 	const logoContainer = document.getElementById('logoContainer');
 	const content = document.getElementById('content');
 	const header = document.getElementById('header');
 	const form = document.getElementById('newsletterForm');
+
+	// Scale factor for logo size
 	const logoScaleFactor = { desktop: window.innerHeight / 375, mobile: 0.2 };
 
 	// Add initial animations
@@ -63,8 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			console.error('❌ Parallax element not found.');
 			return;
 		}
-
-		console.log('✅ Parallax effect initialized.');
 
 		// Rotation variables
 		let rotateX = 0,
@@ -162,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	mouseTrackingParallax();
 
-	// Handle newsletter form submission
+	// Handle newsletter form submission - TODO: Add Validation and Connect to Backend
 	form.addEventListener('submit', (e) => {
 		e.preventDefault();
 		const name = document.getElementById('name').value;
